@@ -4,6 +4,11 @@
   list-style: none;
   text-decoration: none;
   border: none;
+  color: #c0c0c0;
+  font-family: "Exo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: thin;
+  font-style: normal;
 }
 
 body{
@@ -32,4 +37,16 @@ input:focus{
   font-weight: 400;
   font-style: normal;
   color: #07FE11;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.menu-button {
+  background: none;
+  padding: 0px 20px;
+  font-size: 1.3rem;
 }

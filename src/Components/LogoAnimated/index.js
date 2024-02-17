@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import "./LogoAnimated.css"
-import { HomeContext } from "../../Context/Home/HomeContext";
+import { MainContext } from "../../Context/Main/MainContext";
 
 
 export default function LogoAnimated() {
     
     const [logoLoop, setLogoLoop] = useState('');
     const [classBarra, setClassBarra] = useState("");
-    const {setLoadEnd} = useContext(HomeContext)
-    const {loadEnd} = useContext(HomeContext)
+    const {setLoadEnd} = useContext(MainContext)
+    const {loadEnd} = useContext(MainContext)
     
     useEffect(()=>{
         const textLogo = "<p get(DanielDiniz)/>".split("")
@@ -16,6 +16,11 @@ export default function LogoAnimated() {
         let text = ""
         let textClass = ""
 
+        //Usa o Local Storage pra exibir a animacao somente na primeira visita do usuário
+        let jaViuAnimacao = JSON.parse(localStorage.getItem("animation")) || false
+        jaViuAnimacao && setLoadEnd(true)
+
+        //Encrementa a state no tempo configurado, o que gera a animação
         let timerId = setInterval(()=>{            
             if (count < textLogo.length) {
                 text = String.prototype.concat(text,textLogo[count])
@@ -23,13 +28,17 @@ export default function LogoAnimated() {
             }
             else {
                 clearInterval(timerId)
+
+                //Conta tempo para não haver parada brusca
                 setTimeout(()=> {
+                    localStorage.setItem("animation", JSON.stringify(true))
                     setLoadEnd(true)
                 },1500)
             }
             count++
-        },[500])
+        },[300])
 
+        //manipula a barra para melhorar efeito de digitação
         let timerBarra = setInterval(()=> {
             textClass == "" ? textClass = "logo" : textClass=""
             setClassBarra(textClass)
@@ -37,7 +46,7 @@ export default function LogoAnimated() {
             if(count > textLogo.length){
                 clearInterval(timerBarra)
             } 
-        },800)
+        },500)
     },[])
 
     return(

@@ -1,0 +1,26 @@
+.conteudo-home {
+    display: flex;
+}
+
+.foto-home {
+    height: 100vh;
+}
+
+.text-home {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.text-developer,
+.data {
+    font-size: 1.3rem;
+}
+
+.nome {
+    align-self: flex-end;
+    justify-self: center;
+    font-size: 100px;
+}
