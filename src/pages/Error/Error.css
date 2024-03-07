@@ -1,0 +1,21 @@
+.back-button{
+    font-size: 2rem;
+    margin: 10px;
+}
+
+.error-div {
+    font-size: 2rem;
+}
+
+span {
+    margin: 10px;
+}
+
+.hue-horizontal {
+    transform:scaleY(0.3) translateY(20vh);
+    align-self: flex-end;
+}
+
+.hue-horizontal div {
+    transform: scaleX(0.3);
+}

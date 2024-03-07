@@ -9,7 +9,7 @@
 .text-home {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 70%;
     padding: 10px;
     box-sizing: border-box;
 }

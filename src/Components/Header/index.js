@@ -5,7 +5,7 @@ import { MainContext } from "../../Context/Main/MainContext"
 import { SlArrowUp } from "react-icons/sl";
 
 /*  É necessario para o funcionamento do Header: 
-    configuração no arquivo MainContext
+    configuração no arquivo Routes
     Tag Main com id main
     button com onClick={()=> setOpenMenu(true)} 
     const {setOpenMenu} = useContext(MainContext)
