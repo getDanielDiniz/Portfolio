@@ -62,16 +62,16 @@ export default function Header() {
                 <img src={require("../../assets/escolhida.png")} className="logo-header"/>
             </Link>
             <nav className="menu-header">
-                <Link to="Projetos" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
+                <Link to="/Projetos" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
                     Projetos
                 </Link>
                 <Link to="https://github.com/getDanielDiniz" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
                     GitHub
                 </Link>
-                <Link to="Sobre" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
+                <Link to="/Sobre" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
                     Sobre Mim
                 </Link>
-                <Link to="Feedback" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
+                <Link to="/Feedback" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
                     Feedback
                 </Link>
                 <button className="menu-button" onClick={()=> setOpenMenu(false)}>
