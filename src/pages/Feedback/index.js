@@ -5,7 +5,6 @@ import Header from "../../Components/Header";
 import { collection, doc, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
 import "./Feedback.css"
-import { IoIosAddCircle } from "react-icons/io";
 import FormFeedback from "../../Components/formFeedback";
 
 export default function Feedback() {
@@ -40,14 +39,16 @@ export default function Feedback() {
                 <ul className="lista-feedback">
                     {
                         listaDB.map((feedback)=>{
-                            return(
-                                <li className="feedback" key={feedback.id}>
-                                    <span className="email-feedback">{feedback.email}</span>
-                                    <hr/>
-                                    <p className="text-feedback">{feedback.text}</p>
-                                    <span className="data-feedback">{feedback.data}</span>
-                                </li>
-                            )
+                            if(feedback.permitido) {
+                                return(
+                                    <li className="feedback" key={feedback.id}>
+                                        <span className="email-feedback">{feedback.userName}</span>
+                                        <hr/>
+                                        <p className="text-feedback">{feedback.text}</p>
+                                        <span className="data-feedback">{feedback.data}</span>
+                                    </li>
+                                )
+                            }
                         })
                     }
                 </ul>

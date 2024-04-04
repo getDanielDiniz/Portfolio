@@ -20,7 +20,8 @@ input{
   box-sizing: border-box;
 }
 
-input:focus{
+input:focus,
+button:focus{
   outline: none;
 }
 
@@ -29,7 +30,7 @@ input:focus{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  height: 100vh;
 }
 
 .pixel-font {
@@ -46,7 +47,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .menu-button {
+  display: inline;
   background: none;
-  padding: 0px 20px;
+  padding: 0px 0 0 50px;
   font-size: 1.3rem;
 }

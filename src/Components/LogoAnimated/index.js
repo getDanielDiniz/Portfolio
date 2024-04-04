@@ -3,15 +3,14 @@ import "./LogoAnimated.css"
 import { MainContext } from "../../Context/Main/MainContext";
 
 
-export default function LogoAnimated() {
+export default function LogoAnimated({texto, className}) {
     
     const [logoLoop, setLogoLoop] = useState('');
     const [classBarra, setClassBarra] = useState("");
     const {setLoadEnd} = useContext(MainContext)
-    const {loadEnd} = useContext(MainContext)
     
     useEffect(()=>{
-        const textLogo = "<p get(DanielDiniz)/>".split("")
+        const textLogo = texto.split("")
         let count = 0
         let text = ""
         let textClass = ""
@@ -44,16 +43,15 @@ export default function LogoAnimated() {
             setClassBarra(textClass)
             
             if(count > textLogo.length){
-                clearInterval(timerBarra)
+                
             } 
         },500)
     },[])
 
     return(
 
-        <div className="flex-centralize">
+        <div className={`flex-centralize ${className}`}>
             <h1 className={`${classBarra} pixel-font`}>{logoLoop}</h1>
-            <h2>{loadEnd}</h2>
         </div>
     )
 }

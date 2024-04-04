@@ -3,6 +3,7 @@ import "./header.css"
 import { Link } from "react-router-dom"
 import { MainContext } from "../../Context/Main/MainContext"
 import { SlArrowUp } from "react-icons/sl";
+import LogoutButton from "../LogoutButton";
 
 /*  É necessario para o funcionamento do Header: 
     configuração no arquivo Routes
@@ -65,7 +66,7 @@ export default function Header() {
                 <Link to="/Projetos" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
                     Projetos
                 </Link>
-                <Link to="https://github.com/getDanielDiniz" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
+                <Link to="https://github.com/getDanielDiniz" target="_blank" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
                     GitHub
                 </Link>
                 <Link to="/Sobre" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
@@ -74,6 +75,7 @@ export default function Header() {
                 <Link to="/Feedback" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
                     Feedback
                 </Link>
+                <LogoutButton/>
                 <button className="menu-button" onClick={()=> setOpenMenu(false)}>
                     <SlArrowUp/>
                 </button>
