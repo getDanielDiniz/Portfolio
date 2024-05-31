@@ -1,0 +1,57 @@
+.card{
+    --cinzaBgCard:#1c1c1c;
+
+    height: 230px;
+    width: 190px;
+    
+}
+.flip {
+    height: 100%;
+    width: 100%;
+}
+
+.frontCard,
+.backCard {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.frontCard {
+    background: linear-gradient(var(--cinzaBgCard)  , #000 100% );
+}
+
+.iconStack {
+    width: 10vh;
+    height: 10vh;
+}
+
+.backCard {
+    background:var(--cinzaBgCard);
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.logoProj {
+    height: 5vh;
+}
+
+.backCard a {
+    padding: 2px 10px;
+    transition: all 0.3s;
+    text-shadow: var(--green-logo) 2px 2px 3px;
+}
+
+.backCard a:hover {
+    transform: scale(1.1);
+    text-shadow: var(--green-logo) 5px 5px 2.5px;
+}
+
+.backCard a:active {
+    transform: scale(1);
+    text-shadow: var(--green-logo) 0px 0px 2px;
+}

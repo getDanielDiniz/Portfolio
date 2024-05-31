@@ -7,9 +7,9 @@ import { useNavigate } from "react-router-dom";
 export default function UserHandler({children}) {
     
     const {user} = useContext(AuthContext);
-    const {setUser} = useContext(AuthContext);
     const [ emailVerified,setEmailVerified] = useState(true)
     const navigate = useNavigate()
+    const path = window.location.pathname.toString() 
 
     useEffect(()=>{
         if(user){

@@ -29,14 +29,14 @@ export default function Choice() {
 
     return (
         <div className="container">
-            <Link className="front" to="/Front-End" id="front"
+            <Link className="front" to="/Projetos/FrontEnd" id="front"
                 onMouseOver={(e)=> classification(e.target.id)}
                 onMouseOut={(e)=> classification(e.target.id)}
             >
                 <img src={require("../../assets/icon-front.png")} className="icon-tec" id="frontImg"/>
                 <h2>Front-End</h2>
             </Link>
-            <Link className="back" to="Back-End" id="back" 
+            <Link className="back" to="/Projetos/BackEnd" id="back" 
                 onMouseOver={(e)=> classification(e.target.id)}
                 onMouseOut={(e)=> classification(e.target.id)}
             >

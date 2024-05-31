@@ -1,6 +1,6 @@
 * {
     --bg-header : #000;
-    --header-size : 100px;
+    --header-size : 50px;
     --green-logo : #07FE11; 
 }
 
@@ -23,6 +23,8 @@ header {
 
 .logo-header{
     height: var(--header-size);
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .menu-header {
@@ -31,7 +33,6 @@ header {
     align-items: center;
     width: 50%;
 }
-
 .link-logo:hover{
     cursor: pointer;
 }

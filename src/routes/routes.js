@@ -6,6 +6,7 @@ import Feedback from "../pages/Feedback";
 import Default from "../pages/Default";
 import Login from "../pages/Login";
 import Cadastro from "../pages/Cadastro";
+import Details from "../pages/Details";
 
 export default function RouterApp() {
     
@@ -16,9 +17,10 @@ export default function RouterApp() {
                     <Route path="/" element={ <Home/>}/>
                     <Route path="/Login" element={<Login/>}/>
                     <Route path="/Cadastro" element={<Cadastro/>}/>
-                    <Route path="/Projetos" element={ <Projetos/>}/>
+                    <Route path="/Projetos/:stack?" element={ <Projetos/>}/>
                     <Route path="*" element={<Error/>} />
                     <Route path="/Feedback" element={<Feedback/>}/>
+                    <Route path="/Projetos/FrontEnd/:id" element={<Details/>}/>
                 </Route>
                 
             </Routes>
