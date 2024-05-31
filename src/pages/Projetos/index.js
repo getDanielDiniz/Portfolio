@@ -9,6 +9,7 @@ import Card from "../../Components/Card";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
 import Error from "../Error";
+import BackButton from "../../Components/BackButton";
 
 export default function Projetos() {
     const {setOpenMenu} = useContext(MainContext)
@@ -50,16 +51,20 @@ export default function Projetos() {
                 <>
                     <Header/>
                     <main id="main" >
+
                         <button className="menu-button menu-projeto" onClick={()=> setOpenMenu(true)}>
                             <SlArrowDown/>
                         </button>
-                        {
-                            projetos.map((projeto)=>{
-                                return(
-                                    <Card projeto={projeto} key={projeto.id}/>
-                                )
-                            })
-                        }
+                        <BackButton/>
+                        <section className="projetos">
+                            {
+                                projetos.map((projeto)=>{
+                                    return(
+                                        <Card projeto={projeto} key={projeto.id}/>
+                                    )
+                                })
+                            }
+                        </section>
                     </main>
                 </>
             )

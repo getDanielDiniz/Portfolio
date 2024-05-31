@@ -7,6 +7,7 @@ import Default from "../pages/Default";
 import Login from "../pages/Login";
 import Cadastro from "../pages/Cadastro";
 import Details from "../pages/Details";
+import EmailNotVerified from "../pages/EmailNotVerified";
 
 export default function RouterApp() {
     
@@ -21,6 +22,8 @@ export default function RouterApp() {
                     <Route path="*" element={<Error/>} />
                     <Route path="/Feedback" element={<Feedback/>}/>
                     <Route path="/Projetos/FrontEnd/:id" element={<Details/>}/>
+                    <Route path="/EmailVerification" element={<EmailNotVerified/>}/>
+
                 </Route>
                 
             </Routes>

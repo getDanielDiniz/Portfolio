@@ -5,11 +5,15 @@ import { AuthContext } from "../../Context/AuthContext";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import EmailNotVerified from "../../pages/EmailNotVerified";
 
 export default function FormFeedback({className}) {
 
     const [feedback, setFeedback] = useState('');
     const {user} = useContext(AuthContext);
+    const {emailVerified} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     async function handleFeedback(e) {
         e.preventDefault()
@@ -17,6 +21,8 @@ export default function FormFeedback({className}) {
         if(!feedback || feedback.trim() == ''){
             return toast.error("Mensagem vazia")
         }
+
+
 
         let data = new Date();
         data = format(data,'dd/MM/yyyy')
@@ -59,7 +65,19 @@ export default function FormFeedback({className}) {
             className="textarea-formFeedback"
             value={feedback}
             onChange={(e)=>setFeedback(e.target.value)}></textarea>
-            <button type="submit" className="button-formFeedback">Enviar</button>
+
+            {
+                user?(
+                    emailVerified?
+                       ( <button type="submit" className="button-formFeedback">Enviar</button>)
+                    :
+                        (<button onClick={()=>navigate("/EmailVerification")} className="button-formFeedback">Verificar email</button>)
+                    )
+                :
+                  (  <button onClick={()=> navigate("/Login")} 
+                    className="button-formFeedback">Login</button>)
+                
+            }
         </form>
     )
 }

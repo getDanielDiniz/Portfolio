@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword , sendEmailVerification} from "firebase/auth";
 import { auth, db } from "../../services/firebaseConnection";
 import { doc, setDoc } from "firebase/firestore";
@@ -9,6 +9,7 @@ import { GoArrowLeft } from "react-icons/go";
 import { toast } from "react-toastify";
 import "./Cadastro.css"
 import 'react-toastify/dist/ReactToastify.css';
+import BackButton from "../../Components/BackButton";
 
 export default function Cadastro() {
     
@@ -16,6 +17,7 @@ export default function Cadastro() {
     const [senha,setSenha] = useState('')
     const [nome,setNome] = useState('')
     const [angulo,setAngulo] = useState(0)
+    const navigate = useNavigate()
     const{actionCodeSettings} = useContext(AuthContext);
 
 
@@ -35,6 +37,7 @@ export default function Cadastro() {
             }
             setDoc(doc(db,"Usuarios",snapshot.user.uid),userData)
             
+            navigate("/EmailVerification")
             return sendEmailVerification(snapshot.user,actionCodeSettings)
         })
         .catch((erro)=> {
@@ -46,7 +49,7 @@ export default function Cadastro() {
 
     return(
         <main className="container-cadastro">
-            <Link to="/Login"><GoArrowLeft/></Link>
+            <BackButton/>
             <form className="form-cadastro" 
             onSubmit={(e)=>cadastrar(e)} 
             style={{transform: `rotate(${angulo}deg)`, 

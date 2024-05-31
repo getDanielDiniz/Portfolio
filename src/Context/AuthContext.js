@@ -7,6 +7,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState('');
+    const [ emailVerified,setEmailVerified] = useState()
     const actionCodeSettings = {
         url: 'http://localhost:3000',
         handleCodeInApp: true,
@@ -16,6 +17,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         onAuthStateChanged(auth,(User)=> {
             setUser(User)
+            setEmailVerified(User.emailVerified)
         })
 
     },[])
@@ -24,6 +26,7 @@ const AuthProvider = ({children}) => {
         <AuthContext.Provider value={{
             user,setUser,
             actionCodeSettings,
+            emailVerified,
         }}>
             {children}
         </AuthContext.Provider>

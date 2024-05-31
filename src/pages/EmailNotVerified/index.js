@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { auth } from "../../services/firebaseConnection";
 import "./EmailNotVerified.css"
+import BackButton from "../../Components/BackButton";
 
 
 export default function EmailNotVerified({user}) {
@@ -25,6 +26,7 @@ export default function EmailNotVerified({user}) {
 
     return(
         <main className="container-notVerified">
+            <BackButton/>
             <div className="img-notVerified"></div>
             <div className="conteudo-notVerified">
                 <span>Olá!</span>

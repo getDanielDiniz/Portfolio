@@ -1,19 +1,28 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebaseConnection";
 import './Login.css'
 import LogoAnimated from "../../Components/LogoAnimated";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../Context/AuthContext";
+import BackButton from "../../Components/BackButton";
 
 export default function Login() {
     
     const [email,setEmail] = useState('')
     const [senha,setSenha] = useState('')
+    const {emailVerified} = useContext(AuthContext)
+    let navigate = useNavigate()
 
     function handleLogin(e){
         e.preventDefault();
-        signInWithEmailAndPassword(auth,email,senha)
+        signInWithEmailAndPassword(auth,email,senha).then(()=>
+            emailVerified?
+                navigate(-1)
+            :
+                navigate("/EmailVerification")
+        )
         .catch((error)=>{
             toast(error)
         })
@@ -21,6 +30,7 @@ export default function Login() {
 
     return (
         <main className={`flex-centralize `}>
+            <BackButton/>
             <LogoAnimated 
             texto={"<p get(DanielDiniz)/>"}
             className="logo-login"/>
