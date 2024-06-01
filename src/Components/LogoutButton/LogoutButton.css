@@ -1,0 +1,32 @@
+.log-button {
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-radius: 5px;
+    border-bottom: 1.5px var(--green-logo) solid;
+}
+
+.log-button:hover {
+    cursor: pointer;
+}
+
+.log-text{
+    transition: 0.5s;
+}
+
+.log-button:hover .log-text {
+    color: var(--green-logo);
+    
+}
+
+.logout {
+    border-bottom: 1.5px #f00 solid;
+}
+
+.logout:hover .log-text {
+    color: #ff0000;
+}
+

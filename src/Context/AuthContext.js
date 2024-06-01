@@ -17,7 +17,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         onAuthStateChanged(auth,(User)=> {
             setUser(User)
-            setEmailVerified(User.emailVerified)
+            User && setEmailVerified(User.emailVerified)
         })
 
     },[])
