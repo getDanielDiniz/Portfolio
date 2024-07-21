@@ -6,7 +6,6 @@
     justify-content: center;
     height: 100%;
     border-radius: 5px;
-    border-bottom: 1.5px var(--green-logo) solid;
 }
 
 .log-button:hover {
@@ -15,15 +14,12 @@
 
 .log-text{
     transition: 0.5s;
+    font-size: 1rem;
 }
 
 .log-button:hover .log-text {
     color: var(--green-logo);
     
-}
-
-.logout {
-    border-bottom: 1.5px #f00 solid;
 }
 
 .logout:hover .log-text {

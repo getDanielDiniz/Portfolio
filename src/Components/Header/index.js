@@ -1,6 +1,6 @@
 import { useContext, useEffect} from "react"
 import "./header.css"
-import { Link } from "react-router-dom"
+import { Link, useHref } from "react-router-dom"
 import { MainContext } from "../../Context/Main/MainContext"
 import { SlArrowUp } from "react-icons/sl";
 import LogoutButton from "../LogoutButton";
@@ -13,18 +13,10 @@ import LogoutButton from "../LogoutButton";
 */
 
 export default function Header() {
-    
-    const {linkAtivo} = useContext(MainContext)
-    const {setLinkAtivo} = useContext(MainContext)
+
     const {openMenu} = useContext(MainContext)
     const {setOpenMenu} = useContext(MainContext)
-
-    function linkAtivo_function(linkClicado) {
-        setLinkAtivo(linkClicado)
-
-        //fecha o header ao mudar de página - não fecha clicando no link ativo
-        linkClicado != linkAtivo && setOpenMenu(false)
-    }
+    let link_atual = useHref()
 
     //Manipulação de abertura e fechamento do Header de acordo com o rook openMenu
     useEffect(()=>{
@@ -41,38 +33,40 @@ export default function Header() {
     },[openMenu])
 
 
-    //Manipula a classe .ativo toda vez que o Header é renderizado
+    /*Manipula a classe .ativo toda vez que o Header é renderizado
+      IMPORTANTE que a rota e o link tenham o mesmo texto*/
     useEffect(()=>{
-        if(linkAtivo){
-            const linkPaginaAtual = document.querySelectorAll(`.link-menu_header`)
-            linkPaginaAtual.forEach((e)=>{
-                const testaLink = linkAtivo.innerHTML == e.innerHTML; 
+            const listaDeLinks_Header = document.querySelectorAll(`.link-menu_header`)
+            listaDeLinks_Header.forEach((e)=>{
                 
-                testaLink?
+                let link_temp = e;
+                link_atual.includes(link_temp.innerHTML)?
                 e.classList.add("ativo"):
                 e.classList.contains("ativo") && e.classList.remove("ativo")
             })
-        }
 
+
+            //Ação ao ser desmontado
+            return ()=> setOpenMenu(false)
     },[])
 
     return (
         
         <header id="header" className="first-stage">
-            <Link to="/" className="link-logo" onClick={(e) => linkAtivo_function(e.target)}>
+            <Link to="/" className="link-logo">
                 <img src={require("../../assets/escolhida.png")} className="logo-header"/>
             </Link>
             <nav className="menu-header">
-                <Link to="/Projetos" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
+                <Link to="/Frames" className="link-menu_header">
+                    Frames
+                </Link>
+                <Link to="/Projetos" className="link-menu_header">
                     Projetos
                 </Link>
-                <Link to="https://github.com/getDanielDiniz" target="_blank" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
-                    GitHub
+                <Link to="/Exercicios" target="_blank" className="link-menu_header">
+                    Exercicios
                 </Link>
-                <Link to="/Sobre" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
-                    Sobre Mim
-                </Link>
-                <Link to="/Feedback" className="link-menu_header" onClick={(e) => linkAtivo_function(e.target)}>
+                <Link to="/Feedback" className="link-menu_header">
                     Feedback
                 </Link>
                 <LogoutButton/>

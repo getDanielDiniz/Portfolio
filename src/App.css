@@ -11,8 +11,12 @@
   font-style: normal;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body{
-  background: #000
+  background: #000;
 }
 
 input{

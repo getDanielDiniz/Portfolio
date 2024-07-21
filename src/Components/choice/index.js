@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import "./Choice.css"
 import { useEffect } from "react";
+import BackButton from "../BackButton";
 
 export default function Choice() {
     
@@ -29,6 +30,7 @@ export default function Choice() {
 
     return (
         <div className="container">
+            <BackButton/>
             <Link className="front" to="/Projetos/FrontEnd" id="front"
                 onMouseOver={(e)=> classification(e.target.id)}
                 onMouseOut={(e)=> classification(e.target.id)}

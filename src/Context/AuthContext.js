@@ -1,6 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../services/firebaseConnection";
+import { auth, db } from "../services/firebaseConnection";
+import { useNavigate } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
 
 export const AuthContext = createContext();
 
@@ -16,8 +18,23 @@ const AuthProvider = ({children}) => {
 
     useEffect(()=>{
         onAuthStateChanged(auth,(User)=> {
-            setUser(User)
-            User && setEmailVerified(User.emailVerified)
+            async function UserBD() {
+                await getDoc(doc(db,'Usuarios',User.uid))
+                .then((snapshot)=>{
+                setUser(snapshot.data())
+                setEmailVerified(User.emailVerified)
+                })
+            }
+        
+            if(User){
+                UserBD()
+            }
+            else{
+                setUser('')
+                setEmailVerified('')
+            }
+                
+            
         })
 
     },[])

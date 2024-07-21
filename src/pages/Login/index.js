@@ -1,30 +1,32 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebaseConnection";
 import './Login.css'
 import LogoAnimated from "../../Components/LogoAnimated";
 import { toast } from "react-toastify";
-import { AuthContext } from "../../Context/AuthContext";
 import BackButton from "../../Components/BackButton";
 
 export default function Login() {
     
     const [email,setEmail] = useState('')
     const [senha,setSenha] = useState('')
-    const {emailVerified} = useContext(AuthContext)
     let navigate = useNavigate()
 
     function handleLogin(e){
         e.preventDefault();
-        signInWithEmailAndPassword(auth,email,senha).then(()=>
-            emailVerified?
+        signInWithEmailAndPassword(auth,email,senha).then((snapshot)=>{
+            
+            //Essa função não pode usar o emailverified do AuthProvider, pois o login é realizado antes do AuthStateChanged
+
+            snapshot.user.emailVerified?
                 navigate(-1)
             :
                 navigate("/EmailVerification")
+        }
         )
         .catch((error)=>{
-            toast(error)
+            toast.error("Email e/ou Senha inválidos")
         })
     }
 

@@ -1,0 +1,88 @@
+.bg-frames {
+    background: #111111;
+}
+
+.header-button{
+    position: fixed;
+    top: 2vh;
+    right: 2vw;
+    cursor: pointer;
+    z-index: 2;
+}
+
+
+.img1,.img2,.img3,.img4{
+    height: 100vh;
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    box-shadow: inset #000 0px 20px 20px;
+}
+
+.img1{
+    background-image: url("./assets/ffy.png");
+}
+.img2{
+    background-image: url("./assets/Agenda.png");
+}
+.img3{
+    background-image: url("./assets/Othoniel.png");
+}
+.img4{
+    background-image: url("./assets/Bannerquadrado.png");
+}
+
+.wrapper{
+    display: flex;
+    gap: 1.2rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.subtitulo-resumo{
+    color: var(--green-logo);
+}
+
+.paragrafo {
+    position: relative;
+    height: 40vh;
+    width: 100%;
+    z-index: 1;
+    box-shadow: #000 0px -20px 20px;
+}
+
+.item-resumo {
+    transition: all 0.5s;
+}
+
+.item-resumo::before{
+    content: '\2660  ' ;
+    color: var(--green-logo);
+}
+
+.item-resumo:hover{
+    transform: translate(20px,0);
+    cursor:default;
+    color: #fff;
+}
+
+.parallax {
+    background-attachment: fixed;
+}
+
+.titulo-resumo{
+    text-align: center;
+}
+
+.link-frames {
+    text-decoration: underline;
+    transition: all 0.5s;
+}
+.link-frames:hover {
+    color: var(--green-logo);
+}

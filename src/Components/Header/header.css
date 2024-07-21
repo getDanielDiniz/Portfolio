@@ -40,7 +40,11 @@ header {
 
 .link-menu_header{
     transition: all 0.5s;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .link-menu_header:hover {
@@ -53,9 +57,12 @@ header {
 }
 
 .ativo {
-    color: var(--green-logo);
+    color: #fff;
     pointer-events: none;
     transition: all 1s;
+    text-shadow: #fff 2px 2px 5px;
+    border-bottom: 1px solid #fff;
+    transition: all 0.5s;
 }
 
 .blur{
@@ -66,4 +73,8 @@ header {
 
 #main {
     transition: all 1s;
+}
+
+.menu-button:hover {
+    cursor: pointer;
 }

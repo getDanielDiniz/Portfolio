@@ -22,25 +22,15 @@ export default function FormFeedback({className}) {
             return toast.error("Mensagem vazia")
         }
 
-
-
         let data = new Date();
         data = format(data,'dd/MM/yyyy')
         let idKeyReact = Math.random().toString(36).substring(2,9)
-        console.log(idKeyReact)
-        let userDB = ''  
-        
-        await getDoc(doc(db,'Usuarios',user.uid))
-        .then((snapshot)=>{
-            userDB = snapshot.data()
-        })
-        .catch((error)=> toast.error(error))
 
-        if(userDB) {
+        if(user) {
             await addDoc(collection(db,'Feedback'),{
                 id:idKeyReact,
-                idUser: userDB.id,
-                userName: userDB.nome,
+                idUser: user.id,
+                userName: user.nome,
                 text: feedback,
                 data:data,
                 permitido: false        
