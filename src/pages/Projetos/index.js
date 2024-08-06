@@ -19,7 +19,7 @@ export default function Projetos() {
 
     useEffect(()=>{
 
-        async function getProjetos(params) {
+        async function getProjetos() {
             
             const projetosTemp = []
     

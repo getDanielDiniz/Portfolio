@@ -2,7 +2,7 @@ import { MainContext } from "../../Context/Main/MainContext"
 import { SlArrowDown } from "react-icons/sl";
 import { useContext, useEffect, useState } from "react";
 import Header from "../../Components/Header";
-import { collection, doc, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
 import "./Feedback.css"
 import FormFeedback from "../../Components/formFeedback";

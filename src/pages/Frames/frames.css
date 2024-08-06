@@ -1,3 +1,7 @@
+header{
+    position: fixed;
+}
+
 .bg-frames {
     background: #111111;
 }

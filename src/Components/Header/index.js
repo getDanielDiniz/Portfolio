@@ -63,7 +63,7 @@ export default function Header() {
                 <Link to="/Projetos" className="link-menu_header">
                     Projetos
                 </Link>
-                <Link to="/Exercicios" target="_blank" className="link-menu_header">
+                <Link to="/Exercicios" className="link-menu_header">
                     Exercicios
                 </Link>
                 <Link to="/Feedback" className="link-menu_header">

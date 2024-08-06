@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import LogoAnimated from "../../Components/LogoAnimated";
 import { MainContext } from "../../Context/Main/MainContext";
 import "./Home.css"
 import Header from "../../Components/Header";
 import { SlArrowDown } from "react-icons/sl";
+import Contato from "../../Components/Contato";
 
 
 export default function Home() {
@@ -27,6 +27,7 @@ export default function Home() {
                         </button>
                     </div>
                 </div>
+                <Contato/>
             </main>
         </>
     )
