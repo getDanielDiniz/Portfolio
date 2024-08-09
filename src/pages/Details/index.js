@@ -1,20 +1,26 @@
 import { doc, getDoc } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { db } from "../../services/firebaseConnection";
 import { toast } from "react-toastify";
 import "./Details.css"
 import Error from "../Error";
 import BackButton from "../../Components/BackButton";
+import Contato from "../../Components/Contato";
+import { MainContext } from "../../Context/Main/MainContext";
 
 
 export default function Details() {
     
     const {id} = useParams()
     const [projeto, setProjeto] = useState({})
+    const {setLoad} = useContext(MainContext)
     let navigate = useNavigate();
 
+    
+    
     useEffect(()=>{
+        setLoad(true)
         
         async function getDetails() {
             await getDoc(doc(db,"Projetos",id))
@@ -50,7 +56,7 @@ export default function Details() {
                         projeto.obs && <p>-- {projeto.obs}</p>
                     }           
                 </section>
-
+                <Contato/>
             </main>
         )
     )

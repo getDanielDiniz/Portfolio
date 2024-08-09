@@ -1,5 +1,5 @@
 import "./Error.css"
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { HuePicker } from 'react-color';
 import { MainContext } from "../../Context/Main/MainContext";
 import BackButton from "../../Components/BackButton";
@@ -9,6 +9,10 @@ export default function Error() {
 
     const {color} = useContext(MainContext)
     const {setColor} = useContext(MainContext)
+    const {setLoad} = useContext(MainContext)
+    useEffect(()=>{
+        setLoad(true)
+    },[setLoad])
 
     const handleChange = (selectedColor) => {
         setColor(selectedColor.hex);

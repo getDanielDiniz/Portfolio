@@ -1,13 +1,19 @@
 import { sendEmailVerification, signOut } from "firebase/auth"
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { auth } from "../../services/firebaseConnection";
 import "./EmailNotVerified.css"
 import BackButton from "../../Components/BackButton";
+import { MainContext } from "../../Context/Main/MainContext";
 
 
 export default function EmailNotVerified({user}) {
     const{actionCodeSettings} = useContext(AuthContext);
+
+    const {setLoad} = useContext(MainContext)
+    useEffect(()=>{
+        setLoad(true)
+    },[setLoad])
 
     async function reenviar() {
         return await sendEmailVerification(user,actionCodeSettings)

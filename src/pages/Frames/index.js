@@ -1,13 +1,20 @@
 import Header from "../../Components/Header";
 import { SlArrowDown } from "react-icons/sl";
 import { MainContext } from "../../Context/Main/MainContext"
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "./frames.css"
 import { Link } from "react-router-dom";
+import { ScrollAnimation } from "../../Components/ScrollAnimation";
 
 export default function Frames() {
     
     const {setOpenMenu} = useContext(MainContext)
+    
+    const {setLoad} = useContext(MainContext)
+    useEffect(()=>{
+        setLoad(true)
+    },[setLoad])
+
     return (
         <>
             <Header/>
@@ -94,7 +101,7 @@ export default function Frames() {
                     </div>
                 </div>
 
-
+                <ScrollAnimation/>
             </main>
         </>
 

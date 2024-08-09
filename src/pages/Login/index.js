@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebaseConnection";
@@ -6,12 +6,17 @@ import './Login.css'
 import LogoAnimated from "../../Components/LogoAnimated";
 import { toast } from "react-toastify";
 import BackButton from "../../Components/BackButton";
+import { MainContext } from "../../Context/Main/MainContext";
 
 export default function Login() {
     
     const [email,setEmail] = useState('')
     const [senha,setSenha] = useState('')
     let navigate = useNavigate()
+    const {setLoad} = useContext(MainContext)
+    useEffect(()=>{
+        setLoad(true)
+    },[setLoad])
 
     function handleLogin(e){
         e.preventDefault();

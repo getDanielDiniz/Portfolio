@@ -2,9 +2,14 @@ import { Link } from "react-router-dom"
 import "./Choice.css"
 import { useEffect } from "react";
 import BackButton from "../BackButton";
+import { MainContext } from "../../Context/Main/MainContext";
+import { useContext } from "react";
 
 export default function Choice() {
     
+    const {setLoad} = useContext(MainContext)
+    useEffect(()=>{setLoad(true)},[])
+
     //classifica o button com hover em back ou front
     function classification(id) {
         const isBackEndHovered = id.includes("back");

@@ -6,13 +6,13 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { BsTelephone } from "react-icons/bs";
 import { FaFileArrowDown } from "react-icons/fa6";
 import { useContext, useState } from "react";
-import { MainContext } from "../../Context/Main/MainContext";
+import { ContatoContext } from "../../Context/ContatoContext";
 
 export default function Contato() {
     
     const [stateClass, setStateClass] = useState('')
-    const {contato} = useContext(MainContext)
-
+    const {contato} = useContext(ContatoContext)
+    
     return (
         <div className={`container-contato ${stateClass}`}>
             <button className="open-modalContato" 

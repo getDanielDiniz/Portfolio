@@ -1,32 +1,25 @@
 import { createContext, useEffect, useState } from "react";
-import { getDoc, doc } from "firebase/firestore";
-import { db } from "../../services/firebaseConnection";
+import { useLocation } from "react-router-dom";
 
 export const MainContext = createContext();
 
 const MainProvider = ({children}) => {
-    const [ loadEnd, setLoadEnd] = useState('')
+    const [ loadEnd, setLoadEnd] = useState('')//animação do login
     const [openMenu, setOpenMenu] = useState(false)
     const [color,setColor] = useState('#07FE11');
-    const [contato, setContato] = useState({})
-   
-    async function getContatos() {
-        await getDoc(doc(db, "Contatos", "qW7SCN4XWgrbWAJxzeWE"))
-        .then((snapshot)=>{
-            setContato(snapshot.data())
-        })
-    }
-    
+    const [load, setLoad] = useState(false)
+    const location = useLocation()
+
     useEffect(()=>{
-        getContatos()
-    },[])
+        setOpenMenu(false)
+    },[location.pathname])
 
     return(
         <MainContext.Provider value={{
             loadEnd, setLoadEnd, 
             openMenu, setOpenMenu,
             color,setColor,
-            contato, setContato
+            load,setLoad
         }}>
             {children}
         </MainContext.Provider>

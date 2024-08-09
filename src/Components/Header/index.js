@@ -44,29 +44,30 @@ export default function Header() {
                 e.classList.add("ativo"):
                 e.classList.contains("ativo") && e.classList.remove("ativo")
             })
-
-
-            //Ação ao ser desmontado
-            return ()=> setOpenMenu(false)
     },[])
 
     return (
         
         <header id="header" className="first-stage">
-            <Link to="/" className="link-logo">
+            <Link to="/" 
+            className="link-logo">
                 <img src={require("../../assets/escolhida.png")} className="logo-header"/>
             </Link>
             <nav className="menu-header">
-                <Link to="/Frames" className="link-menu_header">
+                <Link to="/Frames" 
+                className="link-menu_header">
                     Frames
                 </Link>
-                <Link to="/Projetos" className="link-menu_header">
+                <Link to="/Projetos" 
+                className="link-menu_header">
                     Projetos
                 </Link>
-                <Link to="/Exercicios" className="link-menu_header">
+                <Link to="/Exercicios" 
+                className="link-menu_header">
                     Exercicios
                 </Link>
-                <Link to="/Feedback" className="link-menu_header">
+                <Link to="/Feedback" 
+                className="link-menu_header">
                     Feedback
                 </Link>
                 <LogoutButton/>

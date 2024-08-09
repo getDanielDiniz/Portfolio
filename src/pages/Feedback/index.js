@@ -6,13 +6,17 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
 import "./Feedback.css"
 import FormFeedback from "../../Components/formFeedback";
+import Contato from "../../Components/Contato";
 
 export default function Feedback() {
 
     const {setOpenMenu} = useContext(MainContext)
     const [listaDB, setListaDB] = useState([])
-
+    const {setLoad} = useContext(MainContext)
+    
     useEffect(()=>{
+        setLoad(true)
+
         async function realtime() {
                 
             await getDocs(collection(db,"Feedback")).then((promisse)=>{
@@ -52,6 +56,7 @@ export default function Feedback() {
                         })
                     }
                 </ul>
+                <Contato/>
             </main>
         </>
      )

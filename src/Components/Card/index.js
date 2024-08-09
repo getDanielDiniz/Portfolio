@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import "./CardAnimation.css"
 import "./Card.css"
+import { useContext, useEffect } from "react";
+import { MainContext } from "../../Context/Main/MainContext";
 
 const handlerImg = {
     "react" : require("./assets/react.png"), 
@@ -16,7 +18,11 @@ const handlerImg = {
     
 }
 
+
 export default function Card({className, projeto}) {
+    
+    const {setLoad} = useContext(MainContext)
+    useEffect(()=>{setLoad(true)},[])
 
     /* Enviar projeto como objeto */
     return (

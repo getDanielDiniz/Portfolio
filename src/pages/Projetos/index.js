@@ -10,14 +10,16 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
 import Error from "../Error";
 import BackButton from "../../Components/BackButton";
+import Contato from "../../Components/Contato";
 
 export default function Projetos() {
     const {setOpenMenu} = useContext(MainContext)
     const {stack} = useParams()
     const [projetos, setProjetos] = useState([])
-    const navigate = useNavigate()
-
+    const {setLoad} = useContext(MainContext)
+    
     useEffect(()=>{
+        setLoad(true)
 
         async function getProjetos() {
             
@@ -65,6 +67,7 @@ export default function Projetos() {
                                 })
                             }
                         </section>
+                        <Contato/>
                     </main>
                 </>
             )

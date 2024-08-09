@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword , sendEmailVerification} from "firebase/auth";
 import { auth, db } from "../../services/firebaseConnection";
@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import "./Cadastro.css"
 import 'react-toastify/dist/ReactToastify.css';
 import BackButton from "../../Components/BackButton";
+import { MainContext } from "../../Context/Main/MainContext";
 
 export default function Cadastro() {
     
@@ -20,6 +21,10 @@ export default function Cadastro() {
     const navigate = useNavigate()
     const{actionCodeSettings} = useContext(AuthContext);
 
+    const {setLoad} = useContext(MainContext)
+    useEffect(()=>{
+        setLoad(true)
+    },[setLoad])
 
     async function cadastrar(e) {
         e.preventDefault();

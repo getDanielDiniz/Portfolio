@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { MainContext } from "../../Context/Main/MainContext";
 import "./Home.css"
 import Header from "../../Components/Header";
@@ -10,10 +10,16 @@ export default function Home() {
     const {setOpenMenu} = useContext(MainContext)
     const date = new Date()
     
+    const {setLoad} = useContext(MainContext)
+    useEffect(()=>{
+        setLoad(true)
+    },[setLoad])
+
     return (
         <>
             <Header/>
-            <main id="main" className="conteudo-home"> 
+            <main id="main" 
+            className="conteudo-home"> 
                 <img src={require("../../assets/fotolado.jpeg")} className="foto-home"></img>
                 <div className="text-home">
                     <div className="text-developer">                                

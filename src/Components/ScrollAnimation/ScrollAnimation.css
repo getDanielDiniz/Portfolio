@@ -1,0 +1,55 @@
+.container-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    position: fixed;
+    bottom: 2vh;
+    left: 2vh;
+    z-index: 2;
+}
+
+.container-animation span {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.container-animation svg {
+    font-size: 2rem;
+    fill: rgba(255, 255, 255, 0.4);
+}
+
+.scrollTo{
+    & span{
+        transition: 0.5s;
+    }
+    & svg {
+        transition: 0.5s;
+    }
+}
+
+.scrollTo:hover {
+    cursor: pointer;
+
+    & span{
+        color: var(--green-logo);
+    }
+    & svg {
+        fill: var(--green-logo);
+    }
+}
+
+.container-animation .arrow {
+    animation: sobedesce 1s infinite;
+}
+
+@keyframes sobedesce {
+    0% {
+        transform: translateY(-50px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(-50px);
+    }
+}
